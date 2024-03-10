@@ -5,6 +5,7 @@ import { useState } from 'react';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Header from '../../../components/Header';
+import Image from 'next/image';
 
 const Login = () => {
 
@@ -31,7 +32,7 @@ const Login = () => {
     return (
         <div>
             <Header />
-        <div className='center max-w-[28.75rem] p-[2.5rem] flex flex-col gap-5 border border-solid border-1 rounded'>
+        <div className='center max-w-[28.75rem] p-[2.5rem] flex flex-col gap-5 border border-solid border-1 rounded-2xl'>
             <div>
                 <h1 className='font-bold text-3xl'>Sign In</h1>
             </div>
@@ -39,7 +40,7 @@ const Login = () => {
                 <TextField id="outlined-basic" label="Username" variant="outlined" value={username} required onChange={handleUsernameChange} />
                 <TextField id="outlined-basic" label="Password" variant="outlined" required value={password} onChange={handlePasswordChange}/>
                 <div>
-                    <Button className='bg-black text-white p-3 w-full rounded-full' type='submit'>
+                    <Button className='bg-black text-white p-3 w-full rounded-full hover:text-black' type='submit'>
                     Continue
                 </Button>
                 </div>
