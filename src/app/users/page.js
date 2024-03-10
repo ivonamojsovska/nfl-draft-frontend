@@ -14,10 +14,10 @@ const Users = () => {
             <div>
                 <Header/>
             </div>
-            <div className='flex gap-[70px] pt-[40px] px-[30px]'>
+            <div className='flex gap-[4.376rem] pt-[2.5rem] px-[1.875rem]'>
                 <Sidebar/>
-                <div className='w-full px-5'>
-                    <div className='flex items-center justify-between pb-[25px]'>
+                <div className='w-full'>
+                    <div className='flex items-center justify-between pb-6'>
                         <h3 className='font-bold text-4xl'>All Users</h3>
                         <Link href="/add_user" className='px-6 py-4 border border-1 border-black rounded-full font-bold text-base'>Add User</Link>
                     </div>
