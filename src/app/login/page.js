@@ -4,6 +4,7 @@ import * as React from 'react';
 import { useState } from 'react';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import Header from '../../../components/Header';
 
 const Login = () => {
 
@@ -27,10 +28,10 @@ const Login = () => {
         setPassword('');
     }
 
-
-    
     return (
-        <div className='center w-[28.75rem] p-[2.5rem] flex flex-col gap-5 border border-solid border-1 rounded'>
+        <div>
+            <Header />
+        <div className='center max-w-[28.75rem] p-[2.5rem] flex flex-col gap-5 border border-solid border-1 rounded'>
             <div>
                 <h1 className='font-bold text-3xl'>Sign In</h1>
             </div>
@@ -44,6 +45,7 @@ const Login = () => {
                 </div>
             </form>   
         </div>
+    </div>
     );
 }   
     
