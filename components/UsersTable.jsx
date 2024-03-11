@@ -128,13 +128,13 @@ function EnhancedTableHead(props) {
 
     return (
         <TableHead>
-        <TableRow>
+          <TableRow>
             {headCells.map((headCell) => (
             <TableCell
               key={headCell.id}
             //   padding={headCell.disablePadding ? 'none' : 'normal'}
               sortDirection={orderBy === headCell.id ? order : false}
-            >
+             className='font-bold'>
                 <TableSortLabel
                 active={orderBy === headCell.id}
                 direction={orderBy === headCell.id ? order : 'asc'}
@@ -166,7 +166,7 @@ function EnhancedTableHead(props) {
   
   export default function EnhancedTable() {
     const [order, setOrder] = React.useState('asc');
-    const [orderBy, setOrderBy] = React.useState('calories');
+    const [orderBy, setOrderBy] = React.useState('firstName');
     const [selected, setSelected] = React.useState([]);
     const [page, setPage] = React.useState(0);
     const [dense, setDense] = React.useState(false);

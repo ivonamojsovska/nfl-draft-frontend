@@ -1,5 +1,7 @@
 'use client';
 import  React, {useState} from 'react'
+import { useRouter } from 'next/navigation';
+
 import Header from '../../../components/Header'
 import Sidebar from '../../../components/Sidebar'
 
@@ -11,7 +13,10 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Button from '@mui/material/Button';
 
+
 const AddUser = () => {
+    const router = useRouter();
+
     const [team, setTeam] = useState('');
     const [event, setEvent] =useState('');
     const [isMobileCustomer, setIsMobileCustomer] = useState();
@@ -37,6 +42,12 @@ const AddUser = () => {
         console.log(isInternetCustomer)
     }
 
+    const handleFormSubmit = (e) => {
+        e.preventDefault();
+        console.log('Form Submitted');
+        router.push('/user_details');
+    }
+
     return (
         <div>
             <div>
@@ -44,9 +55,9 @@ const AddUser = () => {
             </div>
             <div className='flex gap-[4.376rem] pt-[2.5rem] px-[1.875rem]'>
                 <Sidebar />
-                <div className='w-full pr-16'>
+                <div className='w-full max-w-[1100px]'>
                     <h3 className='font-bold text-4xl pb-6'>Add User</h3>
-                    <form className='grid grid-cols-2 gap-5'>
+                    <form className='grid grid-cols-2 gap-5' onSubmit={handleFormSubmit}>
                         <div>
                             <TextField id="outlined-basic" label="First Name" variant="outlined" type="text" className='w-full'/>
                         </div>
