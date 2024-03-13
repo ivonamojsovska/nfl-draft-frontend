@@ -6,6 +6,7 @@ import  Image  from 'next/image';
 
 import Header from "../../../components/Header";
 import Sidebar from "../../../components/Sidebar";
+import BackToAllBtn from "../../../components/BackToAllButton";
 
 import ArrowBackOutlinedIcon from '@mui/icons-material/ArrowBackOutlined';
 
@@ -17,7 +18,7 @@ import Select from '@mui/material/Select';
 import Button from '@mui/material/Button';
 
 
-const UserDetails = () => {
+const UserDetails = ({props}) => {
 
     const [team, setTeam] = useState('');
     const [event, setEvent] =useState('');
@@ -53,10 +54,7 @@ const UserDetails = () => {
                 <Sidebar />
                 <div className="max-w-[1100px] w-full">
                     <h3 className="font-bold text-4xl pb-4">User Details</h3>
-                    <Link href='/users' className="border border-solid border-[red] text-[red] rounded px-3 py-2">
-                        <ArrowBackOutlinedIcon />
-                        Back to all users
-                    </Link>
+                    <BackToAllBtn text="Users" />
                     <div>
                         <form className='grid grid-cols-2 gap-5 pt-10'>
                         <div>

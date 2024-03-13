@@ -18,7 +18,7 @@ const Teams = () => {
                 <div className='w-full max-w-[1100px]'>
                     <div className='flex items-center justify-between pb-6'>
                         <h3 className='font-bold text-4xl'>All Teams</h3>
-                        <Link href="/add_team" className='px-6 py-4 border border-1 border-black rounded-full font-bold text-base'>Add Team</Link>
+                        <Link href="/team_details" className='px-6 py-4 border border-1 border-black rounded-full font-bold text-base'>Add Team</Link>
                     </div>
                     <div>
                         <TeamsTable />

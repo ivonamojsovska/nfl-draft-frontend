@@ -8,7 +8,52 @@ import Sidebar from '../../../components/Sidebar'
 
 import { EnhancedTable } from '../../../components/UsersTable'
 
-const Users = () => {
+const Users = ({headCells}) => {
+    const headCellsProps = headCells = [
+        {
+            id: 'name',
+            numeric: false,
+            disablePadding: true,
+            label: 'First Name',
+        },
+        {
+            id: 'lastName',
+            numeric: false,
+            disablePadding: false,
+            label: 'Last Name',
+        },
+        {
+            id: 'email',
+            numeric: false,
+            disablePadding: false,
+            label: 'Email',
+        },
+        {
+            id: 'phoneNumber',
+            numeric: true,
+            disablePadding: false,
+            label: 'Phone Number',
+        },
+        {
+            id: 'team',
+            numeric: false,
+            disablePadding: false,
+            label: 'Team',
+        },
+        {
+            id: 'mobileCustomer',
+            numeric: false,
+            disablePadding: false,
+            label: 'Mobile Customer',
+        },
+        {
+            id: 'internetCustomer',
+            numeric: false,
+            disablePadding: false,
+            label: 'Internet Customer',
+        },
+    ];
+
     return (
         <div>
             <div>
@@ -22,7 +67,7 @@ const Users = () => {
                         <Link href="/add_user" className='px-6 py-4 border border-1 border-black rounded-full font-bold text-base'>Add User</Link>
                     </div>
                     <div>
-                        <EnhancedTable />
+                        <EnhancedTable headCells={headCells}/>
                     </div>
                 </div>
             </div>

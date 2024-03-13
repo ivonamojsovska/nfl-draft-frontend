@@ -10,16 +10,7 @@ import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import TableSortLabel from '@mui/material/TableSortLabel';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
-import Checkbox from '@mui/material/Checkbox';
-import IconButton from '@mui/material/IconButton';
-import Tooltip from '@mui/material/Tooltip';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Switch from '@mui/material/Switch';
-import DeleteIcon from '@mui/icons-material/Delete';
-import FilterListIcon from '@mui/icons-material/FilterList';
 import { visuallyHidden } from '@mui/utils';
 
 function createData(id, name, lastName, email, phoneNumber, team, mobileCustomer, internetCustomer) {
@@ -37,9 +28,9 @@ function createData(id, name, lastName, email, phoneNumber, team, mobileCustomer
 
 const rows = [
     createData(1, 'Ivona', 'Mojsovska', 'ivonamojsovska15@gmail.com', '070123456', 'Mobile', 'Yes', 'No'),
-    createData(1, 'Bvona', 'Mojsovska', 'ivonamojsovska15@gmail.com', '070123456', 'Mobile', 'Yes', 'No'),
-    createData(1, 'Avona', 'Mojsovska', 'ivonamojsovska15@gmail.com', '070123456', 'Mobile', 'Yes', 'No'),
-    createData(1, 'Cvona', 'Mojsovska', 'ivonamojsovska15@gmail.com', '070123456', 'Mobile', 'Yes', 'No'),
+    createData(2, 'Sarah', 'Mojsovska', 'ivonamojsovska15@gmail.com', '070123456', 'Mobile', 'Yes', 'No'),
+    createData(3, 'Ashley', 'Mojsovska', 'ivonamojsovska15@gmail.com', '070123456', 'Mobile', 'Yes', 'No'),
+    createData(4, 'Coco', 'Mojsovska', 'ivonamojsovska15@gmail.com', '070123456', 'Mobile', 'Yes', 'No'),
 ];
 
 function descendingComparator(a, b, orderBy) {
@@ -164,7 +155,7 @@ function EnhancedTableHead(props) {
   };
   
   
-  export default function EnhancedTable() {
+  export default function EnhancedTable({headCells}) {
     const [order, setOrder] = React.useState('asc');
     const [orderBy, setOrderBy] = React.useState('firstName');
     const [selected, setSelected] = React.useState([]);
@@ -264,19 +255,14 @@ function EnhancedTableHead(props) {
                       selected={isItemSelected}
                       sx={{ cursor: 'pointer' }}
                     >
-                      <TableCell
-                        component="th"
-                        id={labelId}
-                        scope="row"
-                      >
-                        {row.name}
-                      </TableCell>
-                      <TableCell>{row.lastName}</TableCell>
-                      <TableCell>{row.email}</TableCell>
-                      <TableCell>{row.phoneNumber}</TableCell>
-                      <TableCell>{row.team}</TableCell>
-                      <TableCell>{row.mobileCustomer}</TableCell>
-                      <TableCell>{row.internetCustomer}</TableCell>
+                     {headCells.map((headCell) => (
+                        <TableCell
+                          key={headCell.id}
+                          align={headCell.numeric ? 'right' : 'left'}
+                        >
+                          {row[headCell.id]}
+                        </TableCell>
+                      ))}
                     </TableRow>
                   );
                 })}
