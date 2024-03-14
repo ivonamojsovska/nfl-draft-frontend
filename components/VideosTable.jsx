@@ -1,6 +1,6 @@
+'use client';
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import { alpha } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -13,44 +13,19 @@ import TableSortLabel from '@mui/material/TableSortLabel';
 import Paper from '@mui/material/Paper';
 import { visuallyHidden } from '@mui/utils';
 
-function createData(id, name, lastName, email, phoneNumber, team, mobileCustomer, internetCustomer) {
+function createData(id, userId, createdAt) {
     return {
         id,
-        name,
-        lastName,
-        email,
-        phoneNumber,
-        team,
-        mobileCustomer,
-        internetCustomer,
+       userId,
+       createdAt
     };
 }
 
-const data = fetch('http://localhost:8000/api/v1/users')
-.then(response => {
-  if (!response.ok) {
-    
-    throw new Error('Network response was not ok');
-  }
-  return response.json();
-})
-.then(data => {
-  console.log('Users list:', data);
-  // Do something with the users list data
-})
-.catch(error => {
-  console.error('There was a problem fetching the users:', error);
-});
-
-
 const rows = [
-  createData(1, 'Ivona', 'Mojsovska', 'ivonamojsovska15@gmail.com', '070123456', 'Mobile', 'Yes', 'No'),
-  createData(2, 'Sarah', 'Mojsovska', 'ivonamojsovska15@gmail.com', '070123456', 'Mobile', 'Yes', 'No'),
-  createData(3, 'Ashley', 'Mojsovska', 'ivonamojsovska15@gmail.com', '070123456', 'Mobile', 'Yes', 'No'),
-  createData(4, 'Coco', 'Mojsovska', 'ivonamojsovska15@gmail.com', '070123456', 'Mobile', 'Yes', 'No'),
+    createData(1, '1234', '7.15PM@12/12/2021'),
+    createData(2, '4321', '8.15PM@12/12/2021'),
+    createData(3, '9876', '9.15PM@12/12/2021'),
 ];
-
-
 
 function descendingComparator(a, b, orderBy) {
     if (b[orderBy] < a[orderBy]) {
@@ -86,50 +61,26 @@ function stableSort(array, comparator) {
 
 const headCells = [
     {
-        id: 'name',
+        id: 'id',
         numeric: false,
         disablePadding: true,
-        label: 'First Name',
+        label: 'Video ID',
     },
     {
-        id: 'lastName',
+        id: 'userId',
         numeric: false,
         disablePadding: false,
-        label: 'Last Name',
+        label: 'User ID',
     },
     {
-        id: 'email',
+        id: 'createdAt',
         numeric: false,
         disablePadding: false,
-        label: 'Email',
-    },
-    {
-        id: 'phoneNumber',
-        numeric: true,
-        disablePadding: false,
-        label: 'Phone Number',
-    },
-    {
-        id: 'team',
-        numeric: false,
-        disablePadding: false,
-        label: 'Team',
-    },
-    {
-        id: 'mobileCustomer',
-        numeric: false,
-        disablePadding: false,
-        label: 'Mobile Customer',
-    },
-    {
-        id: 'internetCustomer',
-        numeric: false,
-        disablePadding: false,
-        label: 'Internet Customer',
+        label: 'Created At',
     },
 ];
 
-function EnhancedTableHead(props) {
+function VideosTableHead(props) {
     const { onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort } =
     props;
     const createSortHandler = (property) => (event) => {
@@ -164,7 +115,7 @@ function EnhancedTableHead(props) {
     );
   }
   
-  EnhancedTableHead.propTypes = {
+  VideosTableHead.propTypes = {
     numSelected: PropTypes.number.isRequired,
     onRequestSort: PropTypes.func.isRequired,
     onSelectAllClick: PropTypes.func.isRequired,
@@ -174,7 +125,7 @@ function EnhancedTableHead(props) {
   };
   
   
-  export default function EnhancedTable({headCells}) {
+  export default function VideosTable() {
     const [order, setOrder] = React.useState('asc');
     const [orderBy, setOrderBy] = React.useState('firstName');
     const [selected, setSelected] = React.useState([]);
@@ -250,7 +201,7 @@ function EnhancedTableHead(props) {
               aria-labelledby="tableTitle"
               size={dense ? 'small' : 'medium'}
             >
-              <EnhancedTableHead
+              <VideosTableHead
                 numSelected={selected.length}
                 order={order}
                 orderBy={orderBy}
@@ -274,7 +225,7 @@ function EnhancedTableHead(props) {
                       selected={isItemSelected}
                       sx={{ cursor: 'pointer' }}
                     >
-                     {headCells.map((headCell) => (
+                      {headCells.map((headCell) => (
                         <TableCell
                           key={headCell.id}
                           align={headCell.numeric ? 'right' : 'left'}
@@ -311,4 +262,4 @@ function EnhancedTableHead(props) {
     );
   }
 
-export { EnhancedTable };
+export { VideosTable };

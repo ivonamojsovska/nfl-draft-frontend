@@ -6,6 +6,7 @@ import Link from 'next/link'
 import Header from '../../../components/Header';
 import Sidebar from '../../../components/Sidebar';
 import TeamsTable from '../../../components/TeamsTable';
+import AddNewDataBtn from '../../../components/AddNewDataBtn';
 
 const Teams = () => {
     return (
@@ -18,7 +19,7 @@ const Teams = () => {
                 <div className='w-full max-w-[1100px]'>
                     <div className='flex items-center justify-between pb-6'>
                         <h3 className='font-bold text-4xl'>All Teams</h3>
-                        <Link href="/team_details" className='px-6 py-4 border border-1 border-black rounded-full font-bold text-base'>Add Team</Link>
+                        <AddNewDataBtn text={'Team'} />
                     </div>
                     <div>
                         <TeamsTable />
